@@ -3,7 +3,8 @@ package ee.taltech.inbankbackend.exceptions;
 /**
  * Thrown when provided personal ID code is invalid.
  */
-public class InvalidPersonalCodeException extends Throwable {
+public class InvalidPersonalCodeException extends RuntimeException {
+
     private final String message;
     private final Throwable cause;
 
