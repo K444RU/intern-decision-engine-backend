@@ -17,11 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DecisionEngine {
 
-    private final InputValidator inputValidator;
-
-    public DecisionEngine(EstonianInputValidator inputValidator) {
-        this.inputValidator = inputValidator;
-    }
+    private final InputValidator inputValidator = new EstonianInputValidator();
 
     /**
      * Calculates the maximum loan amount and period for the customer based on their ID code,

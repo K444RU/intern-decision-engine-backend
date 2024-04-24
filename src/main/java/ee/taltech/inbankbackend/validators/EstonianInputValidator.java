@@ -6,9 +6,7 @@ import ee.taltech.inbankbackend.exceptions.InvalidLoanAmountException;
 import ee.taltech.inbankbackend.exceptions.InvalidLoanPeriodException;
 import ee.taltech.inbankbackend.exceptions.InvalidPersonalCodeException;
 import ee.taltech.inbankbackend.utils.InputValidator;
-import org.springframework.stereotype.Component;
 
-@Component
 public class EstonianInputValidator implements InputValidator {
 
     private final EstonianPersonalCodeValidator validator = new EstonianPersonalCodeValidator();
@@ -18,11 +16,11 @@ public class EstonianInputValidator implements InputValidator {
      * If inputs are invalid, then throws corresponding exceptions.
      *
      * @param personalCode Provided personal ID code
-     * @param loanAmount Requested loan amount
-     * @param loanPeriod Requested loan period
+     * @param loanAmount   Requested loan amount
+     * @param loanPeriod   Requested loan period
      * @throws InvalidPersonalCodeException If the provided personal ID code is invalid
-     * @throws InvalidLoanAmountException If the requested loan amount is invalid
-     * @throws InvalidLoanPeriodException If the requested loan period is invalid
+     * @throws InvalidLoanAmountException   If the requested loan amount is invalid
+     * @throws InvalidLoanPeriodException   If the requested loan period is invalid
      */
     @Override
     public void validate(String personalCode, Long loanAmount, int loanPeriod)
