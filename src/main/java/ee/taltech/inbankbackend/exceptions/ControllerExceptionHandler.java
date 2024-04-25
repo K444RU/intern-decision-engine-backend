@@ -1,5 +1,6 @@
 package ee.taltech.inbankbackend.exceptions;
 
+import com.github.vladislavgoltjajev.personalcode.exception.PersonalCodeException;
 import ee.taltech.inbankbackend.endpoint.DecisionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler({InvalidPersonalCodeException.class, InvalidLoanAmountException.class, InvalidLoanPeriodException.class})
+    @ExceptionHandler({InvalidPersonalCodeException.class, InvalidLoanAmountException.class,
+            InvalidLoanPeriodException.class, PersonalCodeException.class, InvalidAgeException.class})
     public ResponseEntity<DecisionResponse> handleBadRequestException(Exception e) {
         DecisionResponse response = new DecisionResponse();
         response.setLoanAmount(null);

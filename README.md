@@ -72,6 +72,7 @@ The following error responses can be returned by the service:
     - `Invalid personal ID code!` - if the provided personal ID code is invalid
     - `Invalid loan amount!` - if the requested loan amount is invalid
     - `Invalid loan period!` - if the requested loan period is invalid
+    - `Age is below allowed for loan application!` or `Age is above allowed for loan application!` - if the requested age is out of allowed range
 - `404 Not Found` - in case no valid loans can be found
     - `No valid loan found!` - if there is no valid loan found for the given ID code, loan amount, and loan period
 - `500 Internal Server Error` - in case the server encounters an unexpected error while processing the request
@@ -83,3 +84,5 @@ The service consists of two main classes:
 
 - DecisionEngine: A service class that provides a method for calculating an approved loan amount and period for a customer.
 - DecisionEngineController: A REST endpoint that handles requests for loan decisions.
+- EstonianInputValidator: A validation class that checks all the input request params.
+- ControllerExceptionHandler: A class that serves purpose of handling exceptions.

@@ -1,10 +1,7 @@
 package ee.taltech.inbankbackend.service;
 
 import ee.taltech.inbankbackend.config.DecisionEngineConstants;
-import ee.taltech.inbankbackend.exceptions.InvalidLoanAmountException;
-import ee.taltech.inbankbackend.exceptions.InvalidLoanPeriodException;
-import ee.taltech.inbankbackend.exceptions.InvalidPersonalCodeException;
-import ee.taltech.inbankbackend.exceptions.NoValidLoanException;
+import ee.taltech.inbankbackend.exceptions.*;
 import ee.taltech.inbankbackend.utils.InputValidator;
 import ee.taltech.inbankbackend.validators.EstonianInputValidator;
 import org.springframework.stereotype.Service;
@@ -33,11 +30,13 @@ public class DecisionEngine {
      * @throws InvalidLoanAmountException   If the requested loan amount is invalid
      * @throws InvalidLoanPeriodException   If the requested loan period is invalid
      * @throws NoValidLoanException         If there is no valid loan found for the given ID code, loan amount and loan period
+     * @throws InvalidAgeException          If the requested age is invalid
      */
     public Decision calculateApprovedLoan(String personalCode, Long loanAmount, int loanPeriod)
             throws InvalidPersonalCodeException, InvalidLoanAmountException, InvalidLoanPeriodException,
-            NoValidLoanException {
+            NoValidLoanException, InvalidAgeException {
         inputValidator.validate(personalCode, loanAmount, loanPeriod);
+        inputValidator.validateAge(personalCode);
 
         int outputLoanAmount;
         int creditModifier = getCreditModifier(personalCode);
